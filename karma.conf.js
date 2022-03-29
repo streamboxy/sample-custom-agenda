@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-junit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -24,13 +25,17 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
-    coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/sbxy-custom-agenda'),
+    coverageReporter: {      
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reporters: [       
+        { type: 'text-summary' },
+        { type: 'lcovonly' },
+        { type: 'html' }      
+      ],
+      dir: "./output"
+    },   
+    junitReporter: {
+      outputDir: "./output"
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
