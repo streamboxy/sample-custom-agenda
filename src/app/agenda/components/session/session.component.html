@@ -12,7 +12,10 @@
             </div>
 
             <div>
-                <a href="#" class="btn btn-primary">Go</a>
+                <a (click)="book()" class="btn btn-outline-primary" [ngbTooltip]="tooltip">
+                    <fa-icon *ngIf="!isBooked" [icon]="faCalendarPlus" size="lg" [fixedWidth]="true"></fa-icon>
+                    <fa-icon *ngIf="isBooked" [icon]="faCalendarCheck" size="lg" [fixedWidth]="true"></fa-icon>
+                </a>
             </div>
         </div>
 

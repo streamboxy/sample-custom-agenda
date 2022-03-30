@@ -2,13 +2,23 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { SessionResource } from 'src/app/model/session.resource';
 import { SessionService } from 'src/app/services/session.service';
-
+import { faCalendarCheck, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss']
 })
 export class SessionComponent implements OnInit {
+  faCalendarCheck = faCalendarCheck;
+  faCalendarPlus = faCalendarPlus;
+
+  get isBooked(): boolean {
+    return this.session.bookedByCurrentUser;
+  }
+
+  get tooltip(): string {
+    return this.isBooked ? 'Von Agenda entfernen' : 'Zur persönlichen Agenda hinzufügen';
+  }
 
   get time(): string {
     return `${moment(this.session.startDateTimeUtc).format('hh:mm')} - ${moment(this.session.endDateTimeUtc).format('hh:mm')} ${this.duration}`;
@@ -30,7 +40,6 @@ export class SessionComponent implements OnInit {
     const end = moment(this.session.endDateTimeUtc);
     const diff = end.diff(start);
     const duration = moment.duration(diff);
-
 
     return `${(duration.asHours() * 400) - 12}px`;
   }
@@ -54,6 +63,10 @@ export class SessionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  book(): void {
+    this.session.bookedByCurrentUser = !this.session.bookedByCurrentUser;
   }
 
 }
