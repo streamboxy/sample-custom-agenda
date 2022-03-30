@@ -25,7 +25,10 @@ export class AgendaComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       await this._session.getSessions();
-      this.setDay(this.days[0]);
+
+      if (this.days?.length > 0) {
+        this.setDay(this.days[0]);
+      }
     } catch (ex) {
       console.error(ex);
     } finally {
