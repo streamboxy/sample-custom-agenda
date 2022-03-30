@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@import './common';
+
+body {
+    color: $text !important;
+    background-color: $background !important;
+
+    font-family: "Standard", "Lato", sans-serif !important;
+    font-weight: 300 !important;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: $text !important;
+    background-color: rgba(127,127,127,0.25) !important;
+    border-color: rgba(127,127,127,0.5) !important;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: rgba(127,127,127,0.5) !important;
+}
+
+a {
+    color: $accent !important;
+}
+
+.card {
+    background-color: rgba(127,127,127,0.25) !important;
+    border-color: rgba(127,127,127,0.5) !important;
+}
+
+.btn-outline-primary {
+    color: $accent !important;
+    border-color: $accent !important;
+
+    &:hover {
+        color: $background !important;
+        background-color: $accent !important;;
+        border-color: $accent !important;;
+    }
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

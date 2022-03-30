@@ -1,0 +1,26 @@
+<div class="card" [ngStyle]="{ 'margin-top': topMargin, height: height }">
+    <img [src]="session.imageSASUrl" class="card-img-top" [alt]="session.title">
+    <div class="card-body">
+        <div class="d-flex mb-3 justify-content-between align-items-center">
+            <div>
+                <h6 class="card-subtitle m-0 text-muted">
+                    {{ time }}
+                </h6>
+                <h5 class="card-title m-0">
+                    {{ session.title }}
+                </h5>
+            </div>
+
+            <div>
+                <a (click)="book()" class="btn btn-outline-primary" [ngbTooltip]="tooltip">
+                    <fa-icon *ngIf="!isBooked" [icon]="faCalendarPlus" size="lg" [fixedWidth]="true"></fa-icon>
+                    <fa-icon *ngIf="isBooked" [icon]="faCalendarCheck" size="lg" [fixedWidth]="true"></fa-icon>
+                </a>
+            </div>
+        </div>
+
+        <p class="card-text">
+            {{ session.description }}
+        </p>
+    </div>
+</div>

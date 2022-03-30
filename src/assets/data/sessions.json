@@ -1,0 +1,122 @@
+[
+    {
+        "id": "3e3bf4dd-81e3-4c3e-949f-c016ca513f4c",
+        "title":  "Opening Keynote",
+        "description": "",
+        "imageSASUrl": "https://picsum.photos/640/360?random=1",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T06:00:00.000Z",
+        "endDateTimeUtc": "2022-04-01T06:45:00.000Z",
+        "customProperties": {
+            "stageTrack": "Main Stage"
+        }
+    },
+    {
+        "id": "498ec034-0fa3-4556-914f-87b02f46df39",
+        "title":  "New Product Show",
+        "description": "Erfahren sie alles über unsere neuen Produkte.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=2",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T07:00:00.000Z",
+        "endDateTimeUtc": "2022-04-01T09:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Main Stage"
+        }
+    },
+    {
+        "id": "5448867c-ad90-4edb-a51a-38a94a113225",
+        "title":  "Product Team Q&A",
+        "description": "Treten Sie in den direkten Dialog mit unseren Produktentwicklern.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=3",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T07:00:00.000Z",
+        "endDateTimeUtc": "2022-04-01T08:30:00.000Z",
+        "customProperties": {
+            "stageTrack": "Interaction Area"
+        }
+    },
+    {
+        "id": "f1fc589a-6c5e-4005-8b25-c8f87faa76a0",
+        "title":  "Networking",
+        "description": "Informal Networking Meeting.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=4",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T08:30:00.000Z",
+        "endDateTimeUtc": "2022-04-01T10:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Interaction Area"
+        }
+    },
+    {
+        "id": "7148a3bd-25fa-4cfa-9375-997cf5bf0032",
+        "title":  "Deep Dive Product A",
+        "description": "Lernen Sie Produkt A im Detail kennen.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=5",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T06:30:00.000Z",
+        "endDateTimeUtc": "2022-04-01T07:30:00.000Z",
+        "customProperties": {
+            "stageTrack": "Deep Dives"
+        }
+    },
+    {
+        "id": "88650709-b5d7-4591-90de-dfdf8edff7f8",
+        "title":  "Deep Dive Product B",
+        "description": "Lernen Sie Produkt B im Detail kennen.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=6",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T08:30:00.000Z",
+        "endDateTimeUtc": "2022-04-01T10:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Deep Dives"
+        }
+    },
+    {
+        "id": "ba2acdfd-3385-4e05-b93e-b3422299032b",
+        "title":  "Other Product Show",
+        "description": "Erfahren sie alles über unsere anderen Produkte.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=7",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-02T07:00:00.000Z",
+        "endDateTimeUtc": "2022-04-02T09:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Main Stage"
+        }
+    },
+    {
+        "id": "674a1aa2-d3bd-45c2-ab21-4d6f39000ce8",
+        "title":  "Development Team Q&A",
+        "description": "Treten Sie in den direkten Dialog mit unseren Produktentwicklern.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=8",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-02T07:00:00.000Z",
+        "endDateTimeUtc": "2022-04-02T08:30:00.000Z",
+        "customProperties": {
+            "stageTrack": "Interaction Area"
+        }
+    },
+    {
+        "id": "5f18b10d-d2b3-4bf3-91e6-171f3a96bd56",
+        "title":  "Deep Dive Product C",
+        "description": "Lernen Sie Produkt C im Detail kennen.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=9",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-02T06:30:00.000Z",
+        "endDateTimeUtc": "2022-04-02T07:30:00.000Z",
+        "customProperties": {
+            "stageTrack": "Deep Dives"
+        }
+    },
+    {
+        "id": "daf7290e-efa6-4538-82be-72448dcbc414",
+        "title":  "Deep Dive Product D",
+        "description": "Lernen Sie Produkt D im Detail kennen.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=10",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-02T08:30:00.000Z",
+        "endDateTimeUtc": "2022-04-02T10:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Deep Dives"
+        }
+    }
+]

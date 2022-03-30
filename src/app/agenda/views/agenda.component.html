@@ -1,0 +1,15 @@
+<div *ngIf="isLoading">
+    Lade...
+</div>
+
+<div *ngIf="!isLoading">
+    <ul class="nav nav-tabs">
+        <li class="nav-item" *ngFor="let day of days">
+            <a class="nav-link" [ngClass]="{ 'active': isActive(day) }" aria-current="page" (click)="setDay(day)">{{ formatDay(day) }}</a>
+        </li>
+    </ul>
+
+    <div class="m-3">
+        <app-day></app-day>
+    </div>
+</div>
