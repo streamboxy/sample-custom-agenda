@@ -37,25 +37,25 @@ export class SessionService {
   ) { }
 
   public getSessionsByDay(day: string): SessionResource[] {
-    return this._sessions?.filter((p) => moment(p.startDateTimeUtc).isSame(moment(day), 'day') && p.isMainSession == false) ?? [];
+    return this._sessions?.filter((p) => moment(p.startDateTimeUtc).isSame(moment(day), 'day')) ?? [];
   }
 
   public getSessionsBefore(session: SessionResource): SessionResource[] {
     return this.getSessionsByDay(session.startDateTimeUtc.split('T')[0])!.filter((p) =>
-      session.customProperties?.stageTrack == p.customProperties?.stageTrack &&
+      session.description == p.description &&
       moment(session.endDateTimeUtc).isAfter(moment(p.startDateTimeUtc))
     );
   }
 
   public getOffsetToPreviousSessionInHours(session: SessionResource): number {
     const previousSession = this.getSessionsByDay(session.startDateTimeUtc.split('T')[0])!
-      .filter((p) => session.customProperties?.stageTrack == p.customProperties?.stageTrack)
+      .filter((p) => session.description == p.description)
       .sort((p) => moment(session.endDateTimeUtc).diff(p.startDateTimeUtc))
       .filter((p) => moment(p.startDateTimeUtc).isBefore(session.endDateTimeUtc))
       .filter((p) => p.id != session.id);
-
+    console.log(session.title, previousSession)
     if (previousSession.length > 0) {
-      const duration = moment.duration(moment(session.startDateTimeUtc).diff(moment(previousSession[0].endDateTimeUtc)));
+      const duration = moment.duration(moment(session.startDateTimeUtc).diff(moment(previousSession[previousSession.length-1].endDateTimeUtc)));
 
       return duration.asHours();
     } else {
@@ -85,7 +85,7 @@ export class SessionService {
 
   public async getSessions(): Promise<void> {
    this.getSessionFromApi(this._eventId).subscribe((result) => {
-     this._sessions = result.result;
+     this._sessions = result.result.filter((p) => p.isMainSession == false);
    })
   }
 
@@ -109,8 +109,8 @@ export class SessionService {
     const result = [];
     const map = new Map();
     for (const item of array) {
-      if (!map.has(item.customProperties?.stageTrack)) {
-        map.set(item.customProperties?.stageTrack, true);    // set any value to Map
+      if (!map.has(item.description)) {
+        map.set(item.description, true);    // set any value to Map
         result.push(item);
       }
     }

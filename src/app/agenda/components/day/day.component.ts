@@ -15,7 +15,7 @@ export class DayComponent implements OnInit {
   }
 
   get tracks(): string[] {
-    return [...new Set(this.sessions.map((s) => `${s.customProperties?.stageTrack}`))];
+    return [...new Set(this.sessions.map((s) => `${s.description}`))];
   }
 
   get trackWidth(): string {
@@ -42,7 +42,7 @@ export class DayComponent implements OnInit {
   }
 
   getTrackSessions(track: string): SessionResource[] {
-    return this.sessions.filter((p) => p.customProperties?.stageTrack === track);
+    return this.sessions.filter((p) => p.description === track);
   }
 
 }
