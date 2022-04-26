@@ -17,8 +17,20 @@
         "description": "Erfahren sie alles über unsere neuen Produkte.",
         "imageSASUrl": "https://picsum.photos/640/360?random=2",
         "bookedByCurrentUser": false,
-        "startDateTimeUtc": "2022-04-01T07:00:00.000Z",
+        "startDateTimeUtc": "2022-04-01T06:00:00.000Z",
         "endDateTimeUtc": "2022-04-01T09:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Main Stage"
+        }
+    },
+    {
+        "id": "498ec034-0fa3-4556-914f-87b02f46df30",
+        "title":  "New Product Show 2",
+        "description": "Erfahren sie alles über unsere neuen Produkte.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=7",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-01T07:00:00.000Z",
+        "endDateTimeUtc": "2022-04-01T08:00:00.000Z",
         "customProperties": {
             "stageTrack": "Main Stage"
         }
@@ -115,6 +127,18 @@
         "bookedByCurrentUser": false,
         "startDateTimeUtc": "2022-04-02T08:30:00.000Z",
         "endDateTimeUtc": "2022-04-02T10:00:00.000Z",
+        "customProperties": {
+            "stageTrack": "Deep Dives"
+        }
+    },
+    {
+        "id": "daf7290e-efa6-4538-82be-72448dcbc414",
+        "title":  "Deep Dive Product D",
+        "description": "Lernen Sie Produkt D im Detail kennen.",
+        "imageSASUrl": "https://picsum.photos/640/360?random=10",
+        "bookedByCurrentUser": false,
+        "startDateTimeUtc": "2022-04-03T08:30:00.000Z",
+        "endDateTimeUtc": "2022-04-03T10:00:00.000Z",
         "customProperties": {
             "stageTrack": "Deep Dives"
         }

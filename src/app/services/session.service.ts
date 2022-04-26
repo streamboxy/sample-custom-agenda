@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { delay, firstValueFrom, Observable } from 'rxjs';
 import { SessionResource } from '../model/session.resource';
 import * as moment from 'moment';
+import { SettingsService } from './settings.service';
+import { FullSessionResource } from '../model/full-session.resource';
+import { PagedResult } from '../model/paged-result.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +26,18 @@ export class SessionService {
 
   private _sessions?: SessionResource[];
 
+  private _tenantId!: string;
+  private _sessionId!: string;
+  private _eventId!: string;
+
+
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private _settings: SettingsService
   ) { }
 
   public getSessionsByDay(day: string): SessionResource[] {
-    return this._sessions?.filter((p) => moment(p.startDateTimeUtc).isSame(moment(day), 'day')) ?? [];
+    return this._sessions?.filter((p) => moment(p.startDateTimeUtc).isSame(moment(day), 'day') && p.isMainSession == false) ?? [];
   }
 
   public getSessionsBefore(session: SessionResource): SessionResource[] {
@@ -75,7 +84,21 @@ export class SessionService {
   }
 
   public async getSessions(): Promise<void> {
-    this._sessions = await firstValueFrom(this._getSessionsFromJSON().pipe(delay(750)));
+   this.getSessionFromApi(this._eventId).subscribe((result) => {
+     this._sessions = result.result;
+   })
+  }
+
+  public setEventId(eventId: string){
+    this._eventId = eventId;
+  }
+
+  public setTenantId(tenantId: string){
+    this._tenantId = tenantId;
+  }
+
+  public getSessionFromApi(eventId: string): Observable<PagedResult<SessionResource>>{
+    return this._http.get<PagedResult<SessionResource>>(`${this._settings.settings.backendUrl}/tenant/${this._tenantId}/Publishing/Event/${eventId}/sessions`)
   }
 
   private _getSessionsFromJSON(): Observable<SessionResource[]> {
