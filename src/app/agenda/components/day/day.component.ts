@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { SessionResource } from 'src/app/model/session.resource';
 import { SessionService } from 'src/app/services/session.service';
 
@@ -26,11 +27,16 @@ export class DayComponent implements OnInit {
     return this._session.getSessionsByDay(this._day!);
   }
 
+  get isMobile(): boolean {
+    return this._device.isMobile() || this._device.isTablet();
+  }
+
   private _day?: string;
 
   constructor(
     private _route: ActivatedRoute,
-    private _session: SessionService
+    private _session: SessionService,
+    private _device: DeviceDetectorService
   ) { }
 
   ngOnInit(): void {
