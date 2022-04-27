@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { SessionResource } from 'src/app/model/session.resource';
 import { SessionService } from 'src/app/services/session.service';
-import { faCalendarCheck, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCalendarCheck, faCalendarPlus, faCheckSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { IcsGenerator } from 'src/app/helpers/ics-generator';
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
@@ -11,6 +12,11 @@ import { faCalendarCheck, faCalendarPlus } from '@fortawesome/free-solid-svg-ico
 export class SessionComponent implements OnInit {
   faCalendarCheck = faCalendarCheck;
   faCalendarPlus = faCalendarPlus;
+  faPlusSquare = faPlusSquare;
+  faCheckSquare = faCheckSquare;
+  faCalendar = faCalendar;
+
+tooltipIcs = "Download Ics File"
 
   get isBooked(): boolean {
     return this.session.bookedByCurrentUser;
@@ -67,6 +73,10 @@ export class SessionComponent implements OnInit {
 
   book(): void {
     this.session.bookedByCurrentUser = !this.session.bookedByCurrentUser;
+  }
+
+  downloadIcs(session: SessionResource): void {
+    IcsGenerator.DownloadIcs(session.startDateTimeUtc, session.endDateTimeUtc, session.title)
   }
 
 }
