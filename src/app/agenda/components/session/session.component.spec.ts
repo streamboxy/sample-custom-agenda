@@ -43,6 +43,7 @@ describe('SessionComponent', () => {
       "bookedByCurrentUser": false,
       "startDateTimeUtc": "2022-04-01T06:00:00.000Z",
       "endDateTimeUtc": "2022-04-01T06:45:00.000Z",
+      "isMainSession": false,
       "customProperties": {
         "stageTrack": "Main Stage"
       }
