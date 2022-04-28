@@ -1,4 +1,17 @@
-<div *ngIf="!hasTracks" class="d-flex ">
+<div *ngIf="!hasTracks && !isMobile" class="d-flex ">
+    <div class="flex-sm-fill">
+    <div *ngFor="let session of sessions">
+        <app-session [session]="session" [margin]="parallelSessions.length>0"></app-session>
+    </div>
+</div>
+    <div *ngIf="parallelSessions.length>0" class="flex-sm-fill">
+        <div *ngFor="let pSession of parallelSessions">
+            <app-session [session]="pSession" ></app-session>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!hasTracks && isMobile" class="d-flex flex-column">
     <div class="flex-sm-fill">
     <div *ngFor="let session of sessions">
         <app-session [session]="session" [margin]="parallelSessions.length>0"></app-session>
