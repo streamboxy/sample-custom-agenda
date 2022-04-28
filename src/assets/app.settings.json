@@ -1,3 +1,4 @@
 {
-    "backendUrl": "https://api-test.streamboxy.com"
+    "backendUrl": "https://api-test.streamboxy.com",
+    "tracksActivated": false
 }

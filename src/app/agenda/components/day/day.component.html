@@ -1,6 +1,13 @@
-<div *ngIf="!hasTracks">
+<div *ngIf="!hasTracks" class="d-flex ">
+    <div>
     <div *ngFor="let session of sessions">
-        <app-session [session]="session" [margin]="false"></app-session>
+        <app-session [session]="session" [margin]="parallelSessions.length>0"></app-session>
+    </div>
+</div>
+    <div *ngIf="parallelSessions.length>0" class="">
+        <div *ngFor="let pSession of parallelSessions">
+            <app-session [session]="pSession" ></app-session>
+        </div>
     </div>
 </div>
 
