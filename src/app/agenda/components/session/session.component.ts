@@ -16,7 +16,7 @@ export class SessionComponent implements OnInit {
   faCheckSquare = faCheckSquare;
   faCalendar = faCalendar;
 
-tooltipIcs = "Download Ics File"
+  tooltipIcs = "Download Ics File"
 
   get isBooked(): boolean {
     return this.session.bookedByCurrentUser;

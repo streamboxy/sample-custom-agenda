@@ -72,7 +72,6 @@ export class SessionService {
     let previousSession: SessionResource[] = [];
     if(parallelSessions.length == 0){
        previousSession = this.getSessionsByDay(session.startDateTimeUtc.split('T')[0])!
-      //.filter((p) => session.description == p.description)
       .sort((p) => moment(session.endDateTimeUtc).diff(p.startDateTimeUtc))
       .filter((p) => moment(p.startDateTimeUtc).isBefore(session.endDateTimeUtc))
       .filter((p) => p.id != session.id);
