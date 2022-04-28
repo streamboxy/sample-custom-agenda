@@ -34,7 +34,6 @@ tooltipIcs = "Download Ics File"
     if (this.margin) {
       const offset = this._session.getOffsetToPreviousSessionInHours(this.session);
       const startOffset = this._session.getStartOffset(this.session);
-      console.log(this.session.title,' offset: ', offset, ' startOffset: ', startOffset)
       return `${(Math.max(offset, startOffset) * 400) + 12}px`;
     } else {
       return `12px`;

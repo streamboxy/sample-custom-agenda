@@ -13,8 +13,13 @@ export class AgendaComponent implements OnInit {
   isLoading = true;
 
   get days(): string[] {
-    return this._session.days;
+    return this._session._days;
   }
+
+  set days(val){
+    this._days = val;
+  }
+   _days!: string[];
 
   constructor(
     private _session: SessionService,
@@ -25,10 +30,13 @@ export class AgendaComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       await this._session.getSessions();
+      setTimeout(() => {
+        this.days = this._session._days;
+        if (this.days?.length > 0) {
+          this.setDay(this.days[0]);
+        }
+      }, 250);
 
-      if (this.days?.length > 0) {
-        this.setDay(this.days[0]);
-      }
     } catch (ex) {
       console.error(ex);
     } finally {

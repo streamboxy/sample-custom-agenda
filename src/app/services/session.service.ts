@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { delay, firstValueFrom, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SessionResource } from '../model/session.resource';
 import * as moment from 'moment';
 import { SettingsService } from './settings.service';
-import { FullSessionResource } from '../model/full-session.resource';
 import { PagedResult } from '../model/paged-result.model';
 
 @Injectable({
@@ -21,12 +20,12 @@ export class SessionService {
   }
 
   get days(): string[] {
-    return [...new Set(this._sessions?.map((s) => moment(s.startDateTimeUtc).toISOString().split('T')[0]))].sort();
+    return this._days;
   }
 
 
   private _sessions?: SessionResource[];
-
+  public _days!: string[];
   private _tenantId!: string;
   private _eventId!: string;
 
@@ -156,7 +155,7 @@ export class SessionService {
   public async getSessions(): Promise<void> {
    this.getSessionFromApi(this._eventId).subscribe((result) => {
      this._sessions = result.result.filter((p) => p.isMainSession == false);
-     
+     this._days = [...new Set(this._sessions?.map((s) => moment(s.startDateTimeUtc).toISOString().split('T')[0]))].sort();
    })
   }
 
