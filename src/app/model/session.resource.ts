@@ -4,7 +4,7 @@ export class SessionResource {
     description!: string;
     imageSASUrl!: string;
     bookedByCurrentUser!: boolean;
-    
+    isMainSession!: boolean;
     startDateTimeUtc!: string;
     endDateTimeUtc!: string;
 
