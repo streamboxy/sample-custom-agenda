@@ -56,5 +56,4 @@ export class DayComponent implements OnInit {
   getTrackSessions(track: string): SessionResource[] {
     return this.sessions.filter((p) => p.description === track);
   }
-
 }

@@ -172,10 +172,6 @@ export class SessionService {
     })
   }
 
-  private _getSessionsFromJSON(): Observable<SessionResource[]> {
-    return this._http.get<SessionResource[]>('./assets/data/sessions.json');
-  }
-
   private _distinctByTrack(array: SessionResource[]): SessionResource[] {
     const result = [];
     const map = new Map();
