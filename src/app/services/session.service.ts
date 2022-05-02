@@ -222,6 +222,10 @@ export class SessionService {
     );
   }
 
+  public bookSessionForUser(sessionId: string): Observable<any> {
+    return this._http.put<any>(`${this._settings.settings.backendUrl}/tenant/${this._tenantId}/Publishing/Event/${this._eventId}/Session/${sessionId}/BookSession`, null);
+  }
+
   private _distinctByTrack(array: SessionResource[]): SessionResource[] {
     const result = [];
     const map = new Map();

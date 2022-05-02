@@ -14,12 +14,12 @@
             <div class="d-flex justify-content-between">
             <div class="ics-button">
                 <a class="btn btn-outline-primary " [ngbTooltip]="tooltipIcs" (click)="downloadIcs(session)">
-                    <fa-icon *ngIf="!isBooked" [icon]="faCalendar" size="lg" [fixedWidth]="true"></fa-icon>
+                    <fa-icon [icon]="faCalendar" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
             </div>
 
             <div>    
-                <a (click)="book()" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip">
+                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="session.bookability == 'EventUser'">
                     <fa-icon *ngIf="!isBooked" [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
                     <fa-icon *ngIf="isBooked" [icon]="faCheckSquare" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>

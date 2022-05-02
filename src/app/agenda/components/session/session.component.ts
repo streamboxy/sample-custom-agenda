@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 import { SessionResource } from 'src/app/model/session.resource';
 import { SessionService } from 'src/app/services/session.service';
@@ -23,7 +23,7 @@ export class SessionComponent implements OnInit {
   }
 
   get tooltip(): string {
-    return this.isBooked ? 'Von Agenda entfernen' : 'Zur persönlichen Agenda hinzufügen';
+    return this.isBooked ? 'Gebucht' : 'Zur persönlichen Agenda hinzufügen';
   }
 
   get time(): string {
@@ -63,6 +63,8 @@ export class SessionComponent implements OnInit {
   @Input()
   margin = true;
 
+  @Output() onSessionBooked = new EventEmitter<any>();
+
   constructor(
     private _session: SessionService
   ) { }
@@ -70,8 +72,11 @@ export class SessionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  book(): void {
-    this.session.bookedByCurrentUser = !this.session.bookedByCurrentUser;
+  book(sessionId: string): void {
+    this._session.bookSessionForUser(sessionId).subscribe(async () => {
+      await this._session.getSessions();
+      this.onSessionBooked.emit();
+    })
   }
 
   downloadIcs(session: SessionResource): void {

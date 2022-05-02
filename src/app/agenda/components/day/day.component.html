@@ -1,12 +1,12 @@
 <div *ngIf="!hasTracks && !isMobile" class="d-flex ">
     <div class="flex-sm-fill">
     <div *ngFor="let session of sessions">
-        <app-session [session]="session" [margin]="parallelSessions.length > 0"></app-session>
+        <app-session [session]="session" [margin]="parallelSessions.length > 0" (onSessionBooked)="getActualSessions()"></app-session>
     </div>
 </div>
     <div *ngIf="parallelSessions.length>0" class="flex-sm-fill">
         <div *ngFor="let pSession of parallelSessions">
-            <app-session [session]="pSession" ></app-session>
+            <app-session [session]="pSession" (onSessionBooked)="getActualSessions()" ></app-session>
         </div>
     </div>
 </div>
@@ -14,12 +14,12 @@
 <div *ngIf="!hasTracks && isMobile" class="d-flex flex-column">
     <div class="flex-sm-fill">
     <div *ngFor="let session of sessions">
-        <app-session [session]="session" [margin]="parallelSessions.length > 0"></app-session>
+        <app-session [session]="session" [margin]="parallelSessions.length > 0" (onSessionBooked)="getActualSessions()"></app-session>
     </div>
 </div>
     <div *ngIf="parallelSessions.length>0" class="flex-sm-fill">
         <div *ngFor="let pSession of parallelSessions">
-            <app-session [session]="pSession" ></app-session>
+            <app-session [session]="pSession" (onSessionBooked)="getActualSessions()"></app-session>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
         </h3>
     
         <div class="mt-2" *ngFor="let session of getTrackSessions(track)">
-            <app-session [session]="session"></app-session>
+            <app-session [session]="session" (onSessionBooked)="getActualSessions()"></app-session>
         </div>
     </div>
 </div>
@@ -43,7 +43,7 @@
         </h3>
     
         <div class="mt-2" *ngFor="let session of getTrackSessions(track)">
-            <app-session [session]="session"></app-session>
+            <app-session [session]="session" (onSessionBooked)="getActualSessions()"></app-session>
         </div>
     </div>
 </div>

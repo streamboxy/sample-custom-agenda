@@ -43,7 +43,17 @@ export class DayComponent implements OnInit {
     this._route.queryParamMap.subscribe((queryParamMap) => {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
-        this.sessions =
+        this.getActualSessions();
+      }
+    });
+  }
+
+  getTrackSessions(track: string): SessionResource[] {
+    return this.sessions.filter((p) => p.description === track);
+  }
+
+  getActualSessions(): void  {
+    this.sessions =
           this._session.getSessionsByDayandFilteredWithParallelSessions(
             this._day!
           ) ?? [];
@@ -51,11 +61,5 @@ export class DayComponent implements OnInit {
           this._session.getParallelSessions(
             this._session.getSessionsByDay(this._day!)!
           ) ?? [];
-      }
-    });
-  }
-
-  getTrackSessions(track: string): SessionResource[] {
-    return this.sessions.filter((p) => p.description === track);
   }
 }
