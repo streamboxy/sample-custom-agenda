@@ -4,7 +4,6 @@ import { SessionResource } from 'src/app/model/session.resource';
 import { SessionService } from 'src/app/services/session.service';
 import { faCalendar, faCalendarCheck, faCalendarPlus, faCheckSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { IcsGenerator } from 'src/app/helpers/ics-generator';
-import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
@@ -67,8 +66,7 @@ export class SessionComponent implements OnInit {
   @Output() onSessionBooked = new EventEmitter<any>();
 
   constructor(
-    private _session: SessionService,
-    private _route: ActivatedRoute
+    private _session: SessionService
   ) { }
 
   ngOnInit(): void {

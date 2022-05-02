@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { BookabilityEnum } from 'src/app/model/bookability.enum';
+import { VisibilityEnum } from 'src/app/model/visibility.enum';
 import { SessionService } from 'src/app/services/session.service';
 
 import { SessionComponent } from './session.component';
@@ -44,6 +46,8 @@ describe('SessionComponent', () => {
       "startDateTimeUtc": "2022-04-01T06:00:00.000Z",
       "endDateTimeUtc": "2022-04-01T06:45:00.000Z",
       "isMainSession": false,
+      "bookability": BookabilityEnum.EventUser,
+      "visibility": VisibilityEnum.Anonymous,
       "customProperties": {
         "stageTrack": "Main Stage"
       }
