@@ -12,7 +12,7 @@ export class AgendaComponent implements OnInit {
   isLoading = true;
 
   get days(): string[] {
-    return this._session._days;
+    return this._session.days;
   }
 
   set days(val) {
@@ -29,12 +29,10 @@ export class AgendaComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       await this._session.getSessions();
-      setTimeout(() => {
-        this.days = this._session._days;
-        if (this.days?.length > 0) {
-          this.setDay(this.days[0]);
-        }
-      }, 250);
+      this.days = this._session.days;
+      if (this.days?.length > 0) {
+        this.setDay(this.days[0]);
+      }
     } catch (ex) {
       console.error(ex);
     } finally {

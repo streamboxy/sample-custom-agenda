@@ -8,10 +8,9 @@ import { SettingsService } from 'src/app/services/settings.service';
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
-  styleUrls: ['./day.component.scss']
+  styleUrls: ['./day.component.scss'],
 })
 export class DayComponent implements OnInit {
-
   get hasTracks(): boolean {
     return this.tracks.length > 1 && this._settings.settings.tracksActivated;
   }
@@ -30,27 +29,30 @@ export class DayComponent implements OnInit {
 
   private _day?: string;
 
-   sessions: SessionResource[] = [];
-   parallelSessions: SessionResource[] = [];
+  sessions: SessionResource[] = [];
+  parallelSessions: SessionResource[] = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _session: SessionService,
     private _device: DeviceDetectorService,
     private _settings: SettingsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._route.queryParamMap.subscribe((queryParamMap) => {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
-        setTimeout(() => {
-        this.sessions = this._session.getSessionsByDayandFilteredWithParallelSessions(this._day!) ?? [];
-        this.parallelSessions = this._session.getParallelSessions(this._session.getSessionsByDay(this._day!)!) ?? [];
-        }, 400)
+        this.sessions =
+          this._session.getSessionsByDayandFilteredWithParallelSessions(
+            this._day!
+          ) ?? [];
+        this.parallelSessions =
+          this._session.getParallelSessions(
+            this._session.getSessionsByDay(this._day!)!
+          ) ?? [];
       }
     });
- 
   }
 
   getTrackSessions(track: string): SessionResource[] {
