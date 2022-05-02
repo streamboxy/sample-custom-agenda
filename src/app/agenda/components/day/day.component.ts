@@ -24,19 +24,14 @@ export class DayComponent implements OnInit {
     return `${window.innerWidth / this.tracks.length}px`;
   }
 
-  get sessions(): SessionResource[] {
-    return this._session.getSessionsByDayandFilteredWithParallelSessions(this._day!) ?? [];
-  }
-
-  get parallelSessions(): SessionResource[] {
-    return this._session.getParallelSessions(this._session.getSessionsByDay(this._day!)!) ?? [];
-  }
-
   get isMobile(): boolean {
     return this._device.isMobile() || this._device.isTablet();
   }
 
   private _day?: string;
+
+   sessions: SessionResource[] = [];
+   parallelSessions: SessionResource[] = [];
 
   constructor(
     private _route: ActivatedRoute,
@@ -49,8 +44,13 @@ export class DayComponent implements OnInit {
     this._route.queryParamMap.subscribe((queryParamMap) => {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
+        setInterval(() => {
+        this.sessions = this._session.getSessionsByDayandFilteredWithParallelSessions(this._day!) ?? [];
+        this.parallelSessions = this._session.getParallelSessions(this._session.getSessionsByDay(this._day!)!) ?? [];
+        }, 260)
       }
     });
+ 
   }
 
   getTrackSessions(track: string): SessionResource[] {
