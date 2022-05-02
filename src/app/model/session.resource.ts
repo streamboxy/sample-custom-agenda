@@ -1,3 +1,6 @@
+import { BookabilityEnum } from "./bookability.enum";
+import { VisibilityEnum } from "./visibility.enum";
+
 export class SessionResource {
     id!: string;
     title!:  string;
@@ -7,7 +10,8 @@ export class SessionResource {
     isMainSession!: boolean;
     startDateTimeUtc!: string;
     endDateTimeUtc!: string;
-
+    bookability!: BookabilityEnum;
+    visibility!: VisibilityEnum;
     customProperties?: {
         stageTrack?: string;
     };

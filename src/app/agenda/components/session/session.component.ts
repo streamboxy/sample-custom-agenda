@@ -24,7 +24,7 @@ export class SessionComponent implements OnInit {
   }
 
   get tooltip(): string {
-    return this.isBooked ? 'Von Agenda entfernen' : 'Zur persönlichen Agenda hinzufügen';
+    return this.isBooked ? 'Gebucht' : 'Zur persönlichen Agenda hinzufügen';
   }
 
   get time(): string {

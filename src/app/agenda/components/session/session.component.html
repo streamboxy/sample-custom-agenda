@@ -19,7 +19,7 @@
             </div>
 
             <div>    
-                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip">
+                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="session.bookability == 'EventUser'">
                     <fa-icon *ngIf="!isBooked" [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
                     <fa-icon *ngIf="isBooked" [icon]="faCheckSquare" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
