@@ -13,7 +13,7 @@ export class SettingsService {
   }
 
   async load() {
-    const settings$ =  this.http.get('/assets/app.settings.json');
+    const settings$ =  this.http.get('assets/app.settings.json');
     this._settings = await lastValueFrom(settings$) as AppSettings;
   }
 
