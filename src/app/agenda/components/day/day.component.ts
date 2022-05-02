@@ -44,10 +44,10 @@ export class DayComponent implements OnInit {
     this._route.queryParamMap.subscribe((queryParamMap) => {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
-        setInterval(() => {
+        setTimeout(() => {
         this.sessions = this._session.getSessionsByDayandFilteredWithParallelSessions(this._day!) ?? [];
         this.parallelSessions = this._session.getParallelSessions(this._session.getSessionsByDay(this._day!)!) ?? [];
-        }, 260)
+        }, 400)
       }
     });
  
