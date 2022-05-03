@@ -44,6 +44,9 @@ export class DayComponent implements OnInit {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
         this.getActualSessions();
+        console.log('hasTracks:', this.hasTracks);
+        console.log('tracks.length', this.tracks.length);
+        console.log('tracksActivated', (this._settings.settings.tracksActivated === "false" ? false : true));
       }
     });
   }
