@@ -12,7 +12,7 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class DayComponent implements OnInit {
   get hasTracks(): boolean {
-    return this.tracks.length > 1 && this._settings.settings.tracksActivated === "false" ? false : true;
+    return this.tracks.length > 1 && (this._settings.settings.tracksActivated === "false" ? false : true);
   }
 
   get tracks(): string[] {
@@ -44,6 +44,7 @@ export class DayComponent implements OnInit {
       if (queryParamMap.has('day')) {
         this._day = queryParamMap.get('day') ?? undefined;
         this.getActualSessions();
+        console.log("hasTracks:", this.hasTracks);
       }
     });
   }
