@@ -8,9 +8,12 @@ import {
   faCalendarPlus,
   faCheckSquare,
   faPlusSquare,
+  faShare,
 } from '@fortawesome/free-solid-svg-icons';
 import { IcsGenerator } from 'src/app/helpers/ics-generator';
 import { TranslateService } from '@ngx-translate/core';
+import { AddInService } from 'src/app/services/add-in.service';
+import { SBXEventCommandEnum } from '@streamboxy/add-ins';
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
@@ -22,6 +25,7 @@ export class SessionComponent implements OnInit {
   faPlusSquare = faPlusSquare;
   faCheckSquare = faCheckSquare;
   faCalendar = faCalendar;
+  faShare = faShare;
 
   get tooltipIcs(): string {
     return this._translate.instant('session.ics-download');
@@ -32,6 +36,10 @@ export class SessionComponent implements OnInit {
 
   get tooltip(): string {
     return this.isBooked ? this._translate.instant('session.booked') : this._translate.instant('session.add-to-agenda');
+  }
+
+  get goToSessionTooltip(): string {
+    return this._translate.instant('session.go-to-session')
   }
 
   get time(): string {
@@ -74,7 +82,9 @@ export class SessionComponent implements OnInit {
     const end = moment(this.session.endDateTimeUtc);
     const diff = end.diff(start);
     const duration = moment.duration(diff);
-
+    if (duration.asHours() <= 0.5){
+      return '194px';
+    }
     return `${duration.asHours() * 400 - 12}px`;
   }
 
@@ -96,7 +106,8 @@ export class SessionComponent implements OnInit {
 
   constructor(
     private _session: SessionService,
-    private _translate: TranslateService
+    private _translate: TranslateService,
+    private _addInService: AddInService
   ) {}
 
   ngOnInit(): void {}
@@ -114,5 +125,9 @@ export class SessionComponent implements OnInit {
       session.endDateTimeUtc,
       session.title
     );
+  }
+
+  goToSession(sessionId: string): void {
+    this._addInService.sendCommand(SBXEventCommandEnum.NavigateToSession, sessionId);
   }
 }

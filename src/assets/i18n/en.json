@@ -4,6 +4,7 @@
         "o-clock": "",
         "ics-download": "Download a calendar entry here.",
         "booked": "Booked",
-        "add-to-agenda": "Add to personal agenda"
+        "add-to-agenda": "Add to personal agenda",
+        "go-to-session": "Change to this room"
     }
 }

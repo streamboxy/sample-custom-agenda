@@ -2,6 +2,7 @@
     <img [src]="session.imageSASUrl" class="card-img-top" [alt]="session.title" *ngIf="session.imageSASUrl != undefined"> 
     <div class="card-body">
         <div class="d-flex mb-3 justify-content-between align-items-center" >
+            <div>
             <div class="w-100 me-3">
                 <h6 class="card-subtitle m-0 text-muted">
                     <div class="d-flex justify-content-between ">
@@ -13,22 +14,31 @@
                   </div>
                 </div>
                 </h6>
+               
+            </div>
+            <div>
                 <h5 class="card-title m-0">
                     {{ session.title }}
                 </h5>
             </div>
+        </div>
 
             <div class="d-flex justify-content-between">
-            <div class="ics-button">
+            <div class="session-button">
                 <a class="btn btn-outline-primary " [ngbTooltip]="tooltipIcs" (click)="downloadIcs(session)">
                     <fa-icon [icon]="faCalendar" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
             </div>
 
-            <div>    
-                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="session.bookability == 'EventUser'">
+            <div class="session-button" *ngIf="session.bookability == 'EventUser'">    
+                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" >
                     <fa-icon *ngIf="!isBooked" [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
                     <fa-icon *ngIf="isBooked" [icon]="faCheckSquare" size="lg" [fixedWidth]="true"></fa-icon>
+                </a>
+            </div>
+            <div *ngIf="isBooked">
+                <a (click)="goToSession(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="goToSessionTooltip" >
+                    <fa-icon *ngIf="isBooked" [icon]="faShare" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
             </div>
         </div>
