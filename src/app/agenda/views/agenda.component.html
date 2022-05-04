@@ -5,7 +5,7 @@
 <div *ngIf="!isLoading">
     <ul class="nav nav-tabs">
         <li class="nav-item" *ngFor="let day of days">
-            <a class="nav-link" [ngClass]="{ 'active': isActive(day) }" aria-current="page" (click)="setDay(day)">{{ formatDay(day) }}</a>
+            <a class="nav-link" [ngClass]="{ 'active': isActive(day) }" aria-current="page" (click)="setDay(day)">{{ convertDayString(day) | toLocalString:'shortDate'}}</a>
         </li>
     </ul>
 

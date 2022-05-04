@@ -1,10 +1,17 @@
 <div class="card" [ngStyle]="{ 'margin-top': topMargin, height: height }">
     <img [src]="session.imageSASUrl" class="card-img-top" [alt]="session.title" *ngIf="session.imageSASUrl != undefined"> 
     <div class="card-body">
-        <div class="d-flex mb-3 justify-content-between align-items-center">
-            <div>
+        <div class="d-flex mb-3 justify-content-between align-items-center" >
+            <div class="w-100 me-3">
                 <h6 class="card-subtitle m-0 text-muted">
-                    {{ time }}
+                    <div class="d-flex justify-content-between ">
+                    <div>
+                        {{ startTime | toLocalString:endFormat }} - {{ endTime | toLocalString:endFormat }} {{ "session.o-clock" | translate }}
+                    </div>
+                  <div>
+                      {{ duration }} {{ "session.duration-in-minutes" | translate }}
+                  </div>
+                </div>
                 </h6>
                 <h5 class="card-title m-0">
                     {{ session.title }}
