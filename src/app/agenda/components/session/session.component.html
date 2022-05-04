@@ -30,13 +30,13 @@
                 </a>
             </div>
 
-            <div class="session-button" *ngIf="session.bookability == 'EventUser'">    
+            <div *ngIf="session.bookability == 'EventUser'">    
                 <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" >
                     <fa-icon *ngIf="!isBooked" [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
                     <fa-icon *ngIf="isBooked" [icon]="faCheckSquare" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
             </div>
-            <div *ngIf="isBooked">
+            <div *ngIf="isBooked" [ngClass]="{'margin-left-btn': session.bookability == 'EventUser'}">
                 <a (click)="goToSession(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="goToSessionTooltip" >
                     <fa-icon *ngIf="isBooked" [icon]="faShare" size="lg" [fixedWidth]="true"></fa-icon>
                 </a>
