@@ -4,6 +4,7 @@
         "o-clock": "Hora",
         "ics-download": "Descargue una entrada del calendario aquí.",
         "booked": "Reservado",
-        "add-to-agenda": "Añadir a la agenda personal"
+        "add-to-agenda": "Añadir a la agenda personal",
+        "go-to-session": "Cambiar a esta sala"
     }
 }
