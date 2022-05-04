@@ -9,8 +9,14 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipeModule } from '../pipes/date-pipe.module';
 import { TranslateModule } from '@ngx-translate/core';
 import localeDe from '@angular/common/locales/de';
+import localeEs from '@angular/common/locales/es';
+import localeFr from '@angular/common/locales/fr';
+import localeIt from '@angular/common/locales/it';
 
 registerLocaleData(localeDe);
+registerLocaleData(localeFr);
+registerLocaleData(localeEs);
+registerLocaleData(localeIt);
 @NgModule({
   declarations: [
     AgendaComponent,
