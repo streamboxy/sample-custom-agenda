@@ -1,6 +1,9 @@
 {
     "session": {
         "duration-in-minutes": "Minutos",
-        "o-clock": "Hora"
+        "o-clock": "Hora",
+        "ics-download": "Descargue una entrada del calendario aquí.",
+        "booked": "Reservado",
+        "add-to-agenda": "Añadir a la agenda personal"
     }
 }
