@@ -1,15 +1,24 @@
+import { registerLocaleData } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BookabilityEnum } from 'src/app/model/bookability.enum';
 import { VisibilityEnum } from 'src/app/model/visibility.enum';
+import { DatePipeModule } from 'src/app/pipes/date-pipe.module';
 import { SessionService } from 'src/app/services/session.service';
+import localeDe from '@angular/common/locales/de';
 
 import { SessionComponent } from './session.component';
+import { DateToLocalStringPipe } from 'src/app/pipes/date-to-local-string.pipe';
+
+registerLocaleData(localeDe);
 
 describe('SessionComponent', () => {
   let component: SessionComponent;
   let fixture: ComponentFixture<SessionComponent>;
+  let translateService: TranslateService;
+  
 
   let sessionStub: Partial<SessionService>;
 
@@ -23,11 +32,14 @@ describe('SessionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         FontAwesomeModule,
-        NgbTooltipModule
+        NgbTooltipModule,
+        TranslateModule.forRoot(),
+        DatePipeModule
       ],
-      declarations: [SessionComponent],
+      declarations: [SessionComponent, DateToLocalStringPipe],
       providers: [
-        { provide: SessionService, useValue: sessionStub }
+        { provide: SessionService, useValue: sessionStub },
+        { provide: TranslateService}
       ]
     })
       .compileComponents();
@@ -36,7 +48,7 @@ describe('SessionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SessionComponent);
     component = fixture.componentInstance;
-
+    translateService = TestBed.inject(TranslateService);
     component.session = {
       "id": "3e3bf4dd-81e3-4c3e-949f-c016ca513f4c",
       "title": "Opening Keynote",
@@ -52,7 +64,7 @@ describe('SessionComponent', () => {
         "stageTrack": "Main Stage"
       }
     };
-
+    translateService.currentLang = "de";
     fixture.detectChanges();
   });
 
@@ -60,3 +72,5 @@ describe('SessionComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

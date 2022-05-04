@@ -59,4 +59,8 @@ export class AgendaComponent implements OnInit {
   formatDay(day: string): string {
     return moment(day).format('DD.MM.YYYY');
   }
+
+  convertDayString(day: string): Date {
+    return moment(new Date(day)).toDate();
+  }
 }

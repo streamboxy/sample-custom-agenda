@@ -1,6 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AddIn, AddInHelper, SBXMessageEvent, SBXMessageType } from '@streamboxy/add-ins';
+import { LanguageService } from './services/language.service';
 import { SessionService } from './services/session.service';
 import { TokenService } from './services/token.service';
 
@@ -12,7 +14,14 @@ import { TokenService } from './services/token.service';
 export class AppComponent implements AfterViewInit {
   private addIn?: AddIn;
 
-  constructor(private _tokenService: TokenService, private _activatedRoute: ActivatedRoute, private _sessionService: SessionService) {
+  currentLanguage = 'de';
+
+  constructor(private _tokenService: TokenService, 
+    private _activatedRoute: ActivatedRoute, 
+    private _sessionService: SessionService,
+    private _translateService: TranslateService,
+    private _languageService: LanguageService) {
+    this.setLanguage();
     this.setStyling();
     this._activatedRoute.queryParams.subscribe((params) => {
       let token = params['token'];
@@ -45,6 +54,7 @@ export class AppComponent implements AfterViewInit {
       case SBXMessageType.Language: {
         const langTag = event?.data?.split('-')[0] ?? event?.data;
         console.log('Lang changed,', langTag);
+        this._languageService.switchLanguage(langTag);
 
         break;
       }
@@ -92,5 +102,11 @@ export class AppComponent implements AfterViewInit {
     const node = document.createElement('style');
     node.innerHTML = font;
     document.body.appendChild(node);
+  }
+
+  private setLanguage() {
+    this.currentLanguage = this._translateService.getBrowserLang()!.toLowerCase().includes('de') ? 'de' : 'en';
+    this._translateService.setDefaultLang(this.currentLanguage);
+    this._translateService.use(this.currentLanguage);
   }
 }

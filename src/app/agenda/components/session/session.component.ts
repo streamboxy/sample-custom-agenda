@@ -30,6 +30,18 @@ export class SessionComponent implements OnInit {
     return `${moment(this.session.startDateTimeUtc).format('hh:mm')} - ${moment(this.session.endDateTimeUtc).format('hh:mm')} ${this.duration}`;
   }
 
+  get startTime(): Date {
+    return moment(this.session.startDateTimeUtc).utc().toDate();
+  }
+
+  get endTime(): Date {
+    return moment(this.session.endDateTimeUtc).utc().toDate();
+  }
+
+  get endFormat() {
+    return moment(this.session.endDateTimeUtc).isSame(this.session.startDateTimeUtc, 'day') ? 'shortTime' : 'short';
+  }
+
   get topMargin(): string {
     if (this.margin) {
       const offset = this._session.getOffsetToPreviousSessionInHours(this.session);
@@ -49,12 +61,12 @@ export class SessionComponent implements OnInit {
     return `${(duration.asHours() * 400) - 12}px`;
   }
 
-  private get duration(): string {
+   get duration(): number {
     const start = moment(this.session.startDateTimeUtc);
     const end = moment(this.session.endDateTimeUtc);
-    const diff = end.diff(start);
+    const diff = end.diff(start, 'minutes');
 
-    return `(${moment.utc(diff).format("H:mm")}h)`;
+    return diff;
   }
 
   @Input()
