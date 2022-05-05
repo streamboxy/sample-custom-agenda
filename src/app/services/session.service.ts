@@ -226,6 +226,10 @@ export class SessionService {
     return this._http.put<any>(`${this._settings.settings.backendUrl}/tenant/${this._tenantId}/Publishing/Event/${this._eventId}/Session/${sessionId}/BookSession`, null);
   }
 
+  public signOutFromSessionForUser(sessionId: string): Observable<any> {
+    return this._http.delete<any>(`${this._settings.settings.backendUrl}/tenant/${this._tenantId}/Publishing/Event/${this._eventId}/Session/${sessionId}/BookSession`);
+  }
+
   private _distinctByTrack(array: SessionResource[]): SessionResource[] {
     const result = [];
     const map = new Map();

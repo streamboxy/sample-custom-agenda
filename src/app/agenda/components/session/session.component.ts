@@ -9,11 +9,12 @@ import {
   faCheckSquare,
   faPlusSquare,
   faShare,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { IcsGenerator } from 'src/app/helpers/ics-generator';
 import { TranslateService } from '@ngx-translate/core';
 import { AddInService } from 'src/app/services/add-in.service';
-import { SBXEventCommandEnum } from '@streamboxy/add-ins';
+import { SBXEventCommandEnum } from '@streamboxypublic/add-ins';
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
@@ -26,6 +27,7 @@ export class SessionComponent implements OnInit {
   faCheckSquare = faCheckSquare;
   faCalendar = faCalendar;
   faShare = faShare;
+  faTimes = faTimes;
 
   get tooltipIcs(): string {
     return this._translate.instant('session.ics-download');
@@ -35,7 +37,11 @@ export class SessionComponent implements OnInit {
   }
 
   get tooltip(): string {
-    return this.isBooked ? this._translate.instant('session.booked') : this._translate.instant('session.add-to-agenda');
+    return this.isBooked ? this._translate.instant('session.cancel-session') : this._translate.instant('session.add-to-agenda');
+  }
+
+  get tootipBooked(): string {
+    return this._translate.instant('session.booked');
   }
 
   get goToSessionTooltip(): string {
@@ -117,6 +123,13 @@ export class SessionComponent implements OnInit {
       await this._session.getSessions();
       this.onSessionBooked.emit();
     });
+  }
+
+  signOut(sessionId: string): void {
+    this._session.signOutFromSessionForUser(sessionId).subscribe( async () => {
+      await this._session.getSessions();
+      this.onSessionBooked.emit();
+    })
   }
 
   downloadIcs(session: SessionResource): void {

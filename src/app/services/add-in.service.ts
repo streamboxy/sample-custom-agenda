@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AddIn, AddInHelper, SBXEventCommandEnum, SBXMessageEvent, SBXMessageType } from '@streamboxy/add-ins';
+import { AddIn, AddInHelper, SBXEventCommandEnum, SBXMessageEvent, SBXMessageType } from '@streamboxypublic/add-ins';
 import { Subject } from 'rxjs';
 import { LanguageService } from './language.service';
 import { StyleService } from './style.service';

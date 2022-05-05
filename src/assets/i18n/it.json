@@ -5,6 +5,7 @@
         "ics-download": "Scarica una voce del calendario qui.",
         "booked": "Riservato",
         "add-to-agenda": "Aggiungi all'agenda personale",
-        "go-to-session": "Cambiare in questa stanza"
+        "go-to-session": "Cambiare in questa stanza",
+        "cancel-session": "Rimuovere dall'agenda personale"
     }
 }

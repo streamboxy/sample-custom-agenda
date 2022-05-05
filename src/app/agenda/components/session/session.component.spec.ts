@@ -60,6 +60,7 @@ describe('SessionComponent', () => {
       "isMainSession": false,
       "bookability": BookabilityEnum.EventUser,
       "visibility": VisibilityEnum.Anonymous,
+      "customPermissions": false,
       "customProperties": {
         "stageTrack": "Main Stage"
       }

@@ -12,6 +12,7 @@ export class SessionResource {
     endDateTimeUtc!: string;
     bookability!: BookabilityEnum;
     visibility!: VisibilityEnum;
+    customPermissions!: boolean;
     customProperties?: {
         stageTrack?: string;
     };

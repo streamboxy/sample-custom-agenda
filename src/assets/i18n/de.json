@@ -5,6 +5,7 @@
         "ics-download": "Laden Sie hier einen Kalendereintrag herunter.",
         "booked": "Gebucht",
         "add-to-agenda": "Zur persönlichen Agenda hinzufügen",
-        "go-to-session": "In diesen Raum wechseln"
+        "go-to-session": "In diesen Raum wechseln",
+        "cancel-session": "Von persönlicher Agenda entfernen"
     }
 }
