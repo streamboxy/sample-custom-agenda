@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 import { DayComponent } from '../components/day/day.component';
@@ -27,11 +28,14 @@ describe('AgendaComponent', () => {
     };
 
     await TestBed.configureTestingModule({
+      imports:[
+        TranslateModule.forRoot()
+      ],
       declarations: [AgendaComponent, DayComponent],
       providers: [
         { provide: ActivatedRoute, useValue: routeStub },
         { provide: Router, useValue: routerStub },
-        { provide: SessionService, useValue: sessionStub }
+        { provide: SessionService, useValue: sessionStub },
       ]
     })
       .compileComponents();
