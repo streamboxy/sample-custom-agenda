@@ -6,6 +6,9 @@
         "booked": "Booked",
         "add-to-agenda": "Add to personal agenda",
         "go-to-session": "Change to this room",
-        "cancel-session": "Remove from personal agenda"
+        "cancel-session": "Remove from personal agenda",
+        "agenda-loading": "Loading...",
+        "no-data-available": "No data available",
+        "error-getting-items": "Error occured while loading items"
     }
 }

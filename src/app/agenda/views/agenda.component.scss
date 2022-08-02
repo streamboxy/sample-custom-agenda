@@ -2,3 +2,19 @@
 .nav-item {
     cursor: pointer;
 }
+
+.card {
+    width: 95%;
+
+    height: 100px;
+
+    margin: 12px;
+
+    overflow: hidden;
+
+    text-align: center; 
+      
+    p {
+        margin: auto;
+    }
+}

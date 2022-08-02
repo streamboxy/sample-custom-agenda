@@ -6,6 +6,9 @@
         "booked": "Riservato",
         "add-to-agenda": "Aggiungi all'agenda personale",
         "go-to-session": "Cambiare in questa stanza",
-        "cancel-session": "Rimuovere dall'agenda personale"
+        "cancel-session": "Rimuovere dall'agenda personale",
+        "agenda-loading": "Caricamento in corso...",
+        "no-data-available": "Nessun dato disponibile",
+        "error-getting-items": "Si è verificato un errore durante il caricamento"
     }
 }

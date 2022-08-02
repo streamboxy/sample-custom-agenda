@@ -10,6 +10,8 @@ import { SessionService } from 'src/app/services/session.service';
 })
 export class AgendaComponent implements OnInit {
   isLoading = true;
+  noItems = false;
+  errorGettingItems = false;
 
   get days(): string[] {
     return this._session.days;
@@ -32,9 +34,12 @@ export class AgendaComponent implements OnInit {
       this.days = this._session.days;
       if (this.days?.length > 0) {
         this.setDay(this.days[0]);
+      } else {
+        this.noItems = true;
       }
     } catch (ex) {
       console.error(ex);
+      this.errorGettingItems = true;
     } finally {
       this.isLoading = false;
     }

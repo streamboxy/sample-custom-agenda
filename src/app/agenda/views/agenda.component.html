@@ -1,5 +1,13 @@
 <div *ngIf="isLoading">
-    Lade...
+    {{ "session.agenda-loading" | translate }}
+</div>
+
+<div *ngIf="!isLoading && noItems" class="card">
+    <p>{{ "session.no-data-available" | translate }}</p> 
+</div>
+
+<div *ngIf="errorGettingItems" class="card">
+    <p>{{ "session.error-getting-items" | translate }}</p> 
 </div>
 
 <div *ngIf="!isLoading">
