@@ -2,6 +2,10 @@
     Lade...
 </div>
 
+<div *ngIf="!isLoading && noItems" class="card">
+    <p>Keine Daten verfügbar</p> 
+</div>
+
 <div *ngIf="!isLoading">
     <ul class="nav nav-tabs">
         <li class="nav-item" *ngFor="let day of days">
