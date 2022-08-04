@@ -1,5 +1,4 @@
 <div class="card" [ngStyle]="{ 'margin-top': topMargin, height: height }">
-    <img [src]="session.imageSASUrl" class="card-img-top" [alt]="session.title" *ngIf="session.imageSASUrl != undefined"> 
     <div class="card-body">
         <div class="d-flex mb-3 justify-content-between align-items-center" >
            
@@ -25,30 +24,33 @@
                 <div *ngIf="isBooked" class="accent pe-2" [ngbTooltip]="tootipBooked">
                     <fa-icon [icon]="faCheckSquare" size="2x" [fixedWidth]="true"></fa-icon>
                 </div>
-            <div class="session-button">
-                <a class="btn btn-outline-primary " [ngbTooltip]="tooltipIcs" (click)="downloadIcs(session)">
-                    <fa-icon [icon]="faCalendar" size="lg" [fixedWidth]="true"></fa-icon>
-                </a>
-            </div>
+                <div class="session-button">
+                    <a class="btn btn-outline-primary " [ngbTooltip]="tooltipIcs" (click)="downloadIcs(session)">
+                        <fa-icon [icon]="faCalendar" size="lg" [fixedWidth]="true"></fa-icon>
+                    </a>
+                </div>
 
-            <div *ngIf="session.bookability == 'EventUser' && session.customPermissions">    
-                <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="!isBooked">
-                    <fa-icon [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
-                </a>
-                <a (click)="signOut(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="isBooked">
-                    <fa-icon [icon]="faTimes" size="lg" [fixedWidth]="true"></fa-icon>
-                </a>
+                <div *ngIf="session.bookability == 'EventUser' && session.customPermissions">    
+                    <a (click)="book(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="!isBooked">
+                        <fa-icon [icon]="faPlusSquare" size="lg" [fixedWidth]="true"></fa-icon>
+                    </a>
+                    <a (click)="signOut(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="tooltip" *ngIf="isBooked">
+                        <fa-icon [icon]="faTimes" size="lg" [fixedWidth]="true"></fa-icon>
+                    </a>
+                </div>
+                <div *ngIf="isBooked" [ngClass]="{'margin-left-btn': session.bookability == 'EventUser' && session.customPermissions}">
+                    <a (click)="goToSession(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="goToSessionTooltip" >
+                        <fa-icon *ngIf="isBooked" [icon]="faShare" size="lg" [fixedWidth]="true"></fa-icon>
+                    </a>
+                </div>
             </div>
-            <div *ngIf="isBooked" [ngClass]="{'margin-left-btn': session.bookability == 'EventUser' && session.customPermissions}">
-                <a (click)="goToSession(session.id)" class="btn btn-outline-primary ml-2" [ngbTooltip]="goToSessionTooltip" >
-                    <fa-icon *ngIf="isBooked" [icon]="faShare" size="lg" [fixedWidth]="true"></fa-icon>
-                </a>
-            </div>
-        </div>
         </div>
 
          <p class="card-text">
             {{ session.description }}
         </p> 
+
+        <img [src]="session.imageSASUrl" [ngClass]="{'fading-image': duration <= 30}" [alt]="session.title" *ngIf="session.imageSASUrl != undefined"> 
+
     </div>
 </div>
