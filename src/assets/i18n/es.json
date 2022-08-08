@@ -8,7 +8,7 @@
         "go-to-session": "Cambiar a esta sala",
         "cancel-session": "Eliminar de la agenda personal",
         "agenda-loading": "Cargando...",
-        "no-data-available": "Datos no disponibles",
+        "no-sessions-available": "No se configuraron sesiones para ser visibles en el Programador de sesiones",
         "error-getting-items": "Hubo un error al cargar"
     }
 }
