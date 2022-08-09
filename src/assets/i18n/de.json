@@ -8,7 +8,7 @@
         "go-to-session": "In diesen Raum wechseln",
         "cancel-session": "Von persönlicher Agenda entfernen",
         "agenda-loading": "Lade...",
-        "no-data-available": "Keine Daten verfügbar",
+        "no-sessions-available": "Keine Sessions wurden konfiguriert für die Anzeige im Session Planer",
         "error-getting-items": "Es ist ein Fehler beim Laden aufgetreten"
     }
 }

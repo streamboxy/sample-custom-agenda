@@ -8,7 +8,7 @@
         "go-to-session": "Change to this room",
         "cancel-session": "Remove from personal agenda",
         "agenda-loading": "Loading...",
-        "no-data-available": "No data available",
+        "no-sessions-available": "No sessions were configured to be visible in the Session Scheduler",
         "error-getting-items": "Error occured while loading items"
     }
 }

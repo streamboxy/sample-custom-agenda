@@ -8,7 +8,7 @@
         "go-to-session": "Passer dans cette salle",
         "cancel-session": "Supprimer de l'agenda personnel",
         "agenda-loading": "Chargement...",
-        "no-data-available": "Pas de données disponibles",
+        "no-sessions-available": "Aucune session n'a été configurée pour être visible dans le planificateur de session",
         "error-getting-items": "Une erreur s'est produite lors du chargement"
     }
 }
